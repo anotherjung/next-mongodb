@@ -3,7 +3,7 @@ import clientPromise from "../lib/mongodb";
 export default function Top({ movies }) {
   return (
     <div>
-      <h1>Top 1000 Movies of All Time</h1>
+      <h1>Top 20 Movies of All Time</h1>
       <p>
         <small>(According to Metacritic)</small>
       </p>
@@ -29,7 +29,7 @@ export async function getStaticProps() {
             .collection("movies")
             .find({})
             .sort({ metacritic: -1 })
-            .limit(1000)
+            .limit(20)
             .toArray();
 
         return {
